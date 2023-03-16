@@ -28,7 +28,5 @@ build {
 
     provisioner "shell" {
         script = "inspector.sh"
-        # Run script after cloud-init finishes, otherwise you run into race conditions
-        execute_command = "/usr/bin/cloud-init status --wait && sudo -E -S sh '{{ .Path }}'"
   }
 }
