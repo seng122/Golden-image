@@ -29,6 +29,31 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: GitHub-OIDC-TERRAFORM
 
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Install Packer
+        run: |
+          latest_version=$(curl -L -s https://releases.hashicorp.com/packer/ | grep -o 'packer_.*_linux_amd64.zip' | sort -V | tail -n 1)
+          wget https://releases.hashicorp.com/packer/${latest_version}
+          unzip ${latest_version}
+          rm ${latest_version}
+          sudo mv packer /usr/local/bin/
+
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./image.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./image.pkr.hcl"
+
+      - name: Run `packer build`
+        id: build
+        run: "packer build ./image.pkr.hcl"
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         #with:
