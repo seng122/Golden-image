@@ -24,9 +24,6 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = data.aws_ami.example.id
   instance_type = "t2.micro"
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
   }
 }
 
