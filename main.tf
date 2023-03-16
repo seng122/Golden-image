@@ -4,12 +4,12 @@ data "aws_ami" "example" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 
   filter {
-    name   = "state"
-    values = ["available"]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 
   owners = ["amazon"]
@@ -17,7 +17,7 @@ data "aws_ami" "example" {
 
 ## us-east-1
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 ## creating the ec2 instance pulling the latest aws_ami
