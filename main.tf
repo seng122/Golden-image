@@ -12,7 +12,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-## this is pulling the latest aws_ami s
+## this is pulling the latest aws_ami
 data "aws_ami" "latest_amazon_linux" {
   most_recent = true
 
