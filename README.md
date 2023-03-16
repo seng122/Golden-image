@@ -1,12 +1,15 @@
 # Golden-image
 ### Overall Plan
-- Create a fully automated pipeline that scans everything prior to being provisioned in AWS
-    - use terraform to create resources in AWS
-    - create a scanning pipeline before being provisioned
+1. Packer to create base hardened images (cloud + provider agnostic).
+2. Ansible to configure the base images (optional).
+3. Terraform to pull the Packer Image and provision in the cloud (cloud agnostic).
+4. CI/CD Pipeline with GitHub Actions/GitLab to scan on each pull request, prior to provisioning. 
+
+
+### 1. Packer AMI
 - Create a gold ami and then automatically push the ami to the cloud for it to be used later in my automated pipeline
     - gold AMI needs to be hardened first (Install AWS Inspector and follow the instructiosn for CIS)
-    - AMI should be stored in the Amazon AMI repository (is it stored in a bucket?)
-- make it cloud agnostic (Terraform and Packer + Ansible?)
+    - AMI should be automatically stored in the Amazon AMI repository (is it stored in a bucket? can I specify?)
 
 
 #### Fully automated Pipeline
