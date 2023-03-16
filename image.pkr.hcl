@@ -20,6 +20,7 @@ source "amazon-ebs" "amazon-linux" {
       virtualization-type = "hvm"
     }
   }
+  ssh_username = "ec2-user" 
 }
 
 build {
