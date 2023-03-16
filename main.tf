@@ -16,7 +16,7 @@ data "aws_ami" "example" {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 ## creating the ec2 instance pulling the latest aws_ami
