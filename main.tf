@@ -15,7 +15,7 @@ provider "aws" {
 ## this is pulling the latest aws_ami
 data "aws_ami" "latest_packer_build" {
   most_recent = true
-  owners           = [self]
+  owners           = ["self"]
 }
 
 ## creating the ec2 instance pulling the latest aws_ami
