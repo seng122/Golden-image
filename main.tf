@@ -15,6 +15,11 @@ data "aws_ami" "example" {
   owners = ["amazon"]
 }
 
+## us-east-1
+provider "aws" {
+  region = "us-west-2"
+}
+
 ## creating the ec2 instance pulling the latest aws_ami
 resource "aws_instance" "example" {
   ami           = data.aws_ami.example.id
