@@ -1,5 +1,5 @@
 ## this is pulling the latest aws_ami
-data "aws_ami" "example" {
+data "aws_ami" "latest_amazon_linux" {
   most_recent = true
 
   filter {
@@ -13,10 +13,6 @@ data "aws_ami" "example" {
   }
 
   owners = ["amazon"]
-}
-
-## us-east-1
-provider "aws" {
   region = "us-east-1"
 }
 
