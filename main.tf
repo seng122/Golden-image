@@ -22,8 +22,5 @@ data "aws_ami" "latest_packer_build" {
 resource "aws_instance" "testing" {
   ami           = data.aws_ami.latest_packer_build.id
   instance_type = "t2.micro"
-  lifecycle {
-    ignore_changes = [ami]
   }
-}
 
