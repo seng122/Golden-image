@@ -22,3 +22,5 @@ Following this link - [here](https://www.youtube.com/watch?v=GowFk_5Rx_I)
 
 
 GitHub Action, specified in terraform.yml, creates an ubuntu image(within the github action), installs terraform and then "terraform apply" to create an ec2 instance in AWS
+
+Workflow -> Pull request changes terraform file, terraform pulls the latest ami -> reprovisions the ec2?
