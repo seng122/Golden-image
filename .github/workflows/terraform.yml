@@ -34,14 +34,14 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Install Packer
+      - name: Install HashiCorp GPG key
         run: |
-          latest_version=$(curl -L -s https://releases.hashicorp.com/packer/ | grep -o 'packer_.*_linux_amd64.zip' | sort -V | tail -n 1)
-          wget https://releases.hashicorp.com/packer/${latest_version}
-          unzip ${latest_version}
-          rm ${latest_version}
-          sudo mv packer /usr/local/bin/
-
+          wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+          sudo apt update
+      - name: Install HashiCorp Packer
+        run: sudo apt install packer
+        
       - name: Run `packer init`
         id: packerinit
         run: "packer init ./image.pkr.hcl"
