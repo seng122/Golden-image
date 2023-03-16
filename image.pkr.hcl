@@ -8,7 +8,7 @@ packer {
 }
 
 source "amazon-ebs" "amazon-linux" {
-  ami_name      = "my-amazon-linux-ami-${strftime("%Y%m%d-%H%M%S", timestamp())}"
+  ami_name      = "my-amazon-linux-ami-${timestamp()}"
   instance_type = "t2.micro"
   region        = "us-east-1"
   ami_description = "Golden AMI created --no-public"
