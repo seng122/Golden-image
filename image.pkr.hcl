@@ -1,21 +1,33 @@
-{
-    "builders": [
-        {
-            "type": "amazon-ebs",
-            "region": "us-east-1",
-            "source_ami": "ami-044855ba95c71c991",
-            "instance_type": "t2.micro",
-            "ssh_username": "ec2-user",
-            "ami_name": "amazon-linux-{{timestamp}}"
-        }
-    ],
-    "provisioners": [
-        {
-            "type": "shell",
-            "inline": [
-                "sudo yum update -y",
-                "sudo yum install -y nginx"
-            ]
-        }
+packer {
+  required_plugins {
+    amazon = {
+      version = ">= 0.0.2"
+      source  = "amazon"
+    }
+  }
+}
+
+source "amazon-ebs" "amazon-linux" {
+  ami_name      = "my-amazon-linux-ami"
+  ami_users     = ["self"]
+  instance_type = "t2.micro"
+  region        = "us-east-1"
+  source_ami_filter {
+    most_recent = true
+    owners      = ["amazon"]
+    filters = {
+      name                = "amzn2-ami-hvm-*"
+      virtualization-type = "hvm"
+    }
+  }
+}
+
+build {
+  sources = ["source.amazon-ebs.amazon-linux"]
+
+  provisioner "shell" {
+    inline = [
+      "echo 'Hello, World!' > /tmp/hello.txt"
     ]
+  }
 }
