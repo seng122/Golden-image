@@ -8,10 +8,12 @@ packer {
 }
 
 source "amazon-ebs" "amazon-linux" {
-  ami_name      = "my-amazon-linux-ami-{{timestamp}}"
+  ami_name      = "my-amazon-linux-ami"
   instance_type = "t2.micro"
   region        = "us-east-1"
   ami_description = "Golden AMI created --no-public"
+  force_deregister = true
+  force_delete_snapshot = true
   source_ami_filter {
     most_recent = true
     owners      = ["amazon"]
