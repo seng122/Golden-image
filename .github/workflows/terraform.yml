@@ -43,15 +43,15 @@ jobs:
           sudo mv packer /usr/local/bin/
 
       - name: Run `packer init`
-        id: init
+        id: packerinit
         run: "packer init ./image.pkr.hcl"
 
       - name: Run `packer validate`
-        id: validate
+        id: packervalidate
         run: "packer validate ./image.pkr.hcl"
 
       - name: Run `packer build`
-        id: build
+        id: packerbuild
         run: "packer build ./image.pkr.hcl"
 
       - name: Setup Terraform
