@@ -15,6 +15,7 @@ data "aws_ami" "example" {
   owners = ["amazon"]
 }
 
+## us-east-1
 provider "aws" {
   region = "us-east-1"
 }
