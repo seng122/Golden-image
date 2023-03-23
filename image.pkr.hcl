@@ -19,10 +19,6 @@ packer {
 # Base Image Variables (AWS,GCP,Docker)
 
 # AWS variables
-variable "aws_ami_name" {
-  description = "Name for the AWS AMI"
-  default     = "example-ami"
-}
 variable "aws_ubuntu_ami_filters" {
   description = "Filters for searching the latest Ubuntu AMI in AWS"
   default = {
