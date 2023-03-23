@@ -8,8 +8,8 @@
 ## AWS
 
  Workflow:
- PR on packer file -> packer spins up a EC2 -> AMI is created off that state and stores it in the AWS AMI repository
- PR on terraform file -> terraform pulls the latest AMI(stored by packer) -> reprovisions the ec2 based on statefile
+ - PR on packer file -> packer spins up a EC2 -> AMI is created off that state and stores it in the AWS AMI repository
+ - PR on terraform file -> terraform pulls the latest AMI(stored by packer) -> reprovisions the ec2 based on statefile
 
 ### Step 1 AWS AMI Creation/Configuration
 - Create a gold ami within image.pkr.hcl using Amazon Linux 2 as a base image
