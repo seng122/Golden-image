@@ -1,10 +1,11 @@
-### Golden Image Overview
+# Golden Image Overview
 1. Packer to create base hardened images (cloud + provider agnostic).
 2. Ansible to configure the base images (optional).
 3. Terraform to pull the Packer Image and provision in the cloud (cloud agnostic).
 4. CI/CD Pipeline with GitHub Actions/GitLab to scan on pull request, prior to provisioning. 
----
-### AWS
+
+
+## AWS
 ---
 ### Step 1 AWS AMI Creation
 - Create a gold ami and then automatically push the image to the cloud for it to be used later in my automated pipeline
@@ -31,18 +32,19 @@ Following this link - [here](https://www.youtube.com/watch?v=GowFk_5Rx_I)
 #### Step 3. AMI Hardening using AWS Inspector (CIS)
 - inspector.sh installs AWS Inspector agent on the ec2 image. 
 - using findings from the 
----
-### GCP
+
+
+## GCP
 ---
 ### Step 1. GCP VM Creation
 
----
-### Docker
+
+## Docker
 ---
 ### Step 1. Docker Creation
 
 
-### GitHub Action (CI/CD Pipeline)
+## GitHub Action (CI/CD Pipeline)
 - GitHub Action(configured in yaml files workflows folder) spins up an ubuntu image on GitHub servers, and runs the following tasks
     - static code analysis via Semgrep (trivy to implement later/containers scanning),
     - stores the Access Token from AWS IAM
