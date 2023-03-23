@@ -11,7 +11,7 @@
  - PR on packer file -> packer spins up a EC2 -> AMI is created off that state and stores it in the AWS AMI repository
  - PR on terraform file -> terraform pulls the latest AMI(stored by packer) -> reprovisions the ec2 based on statefile
 
-### Step 1 AWS AMI Creation/Configuration
+### Step 1. AWS AMI Creation/Configuration
 - Create a gold ami within image.pkr.hcl using Amazon Linux 2 as a base image
     - gold image needs to be hardened first (Install AWS Inspector and scan for CIS benchmark then harden it)
     - AMI should be automatically stored in the Amazon AMI repository (is it stored in a bucket? can I specify?)
