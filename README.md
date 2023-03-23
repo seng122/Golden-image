@@ -6,7 +6,6 @@
 
 
 ## AWS
----
 ### Step 1 AWS AMI Creation
 - Create a gold ami and then automatically push the image to the cloud for it to be used later in my automated pipeline
     - gold image needs to be hardened first (Install AWS Inspector and scan for CIS benchmark then harden it)
@@ -35,12 +34,10 @@ Following this link - [here](https://www.youtube.com/watch?v=GowFk_5Rx_I)
 
 
 ## GCP
----
 ### Step 1. GCP VM Creation
 
 
 ## Docker
----
 ### Step 1. Docker Creation
 
 
